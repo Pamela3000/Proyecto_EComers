@@ -1,5 +1,5 @@
 ---
-import Logo from "./Logo.astro"
+import Logo from "@icons/Logo.astro"
 ---
 
 <header
@@ -65,25 +65,28 @@ import Logo from "./Logo.astro"
 </header>
 
 <script >
-  const menuBtn = document.getElementById('menu-btn');
-  const modalMenu = document.querySelector("#modal-menu")
+const menuBtn = document.getElementById('menu-btn');
+const modalMenu = document.querySelector("#modal-menu");
+const closeBtn = document.querySelector("#close-btn");
+
+if (menuBtn && modalMenu && closeBtn) {
   const menuItems = modalMenu.querySelectorAll('li>a ');
-  const closeBtn = document.querySelector("#close-btn")
-  
+
   function toggleDropdownMenu() {
-    modalMenu.classList.toggle('hidden');
+    if (modalMenu) {
+      modalMenu.classList.toggle('hidden');
+    }
   }
 
-
-  menuBtn.addEventListener('click',toggleDropdownMenu)
-
-  closeBtn.addEventListener('click',toggleDropdownMenu)
+  menuBtn.addEventListener('click',toggleDropdownMenu);
+  closeBtn.addEventListener('click',toggleDropdownMenu);
 
   menuItems.forEach(Item => {
     Item.addEventListener('click',toggleDropdownMenu);
-});
-
-
+  });
+} else {
+  console.error('Uno o más elementos no se encontraron en el documento.');
+}
 
 </script>
 
@@ -126,7 +129,7 @@ import Logo from "./Logo.astro"
       const { isIntersecting } = entry
       if (isIntersecting) {
         const color = entry.target.getAttribute("data-header-color")
-        headerEl.style.color = color
+        headerEl.style.color = color ?? '';
       }
     })
   }, observerOptions)
