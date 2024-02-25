@@ -1,26 +1,15 @@
-import sql from "mssql";
+// filename: index.js
+const rest = new (require('rest-mssql-nodejs'))({
+  user: 'braul',
+  password: '',
+  server: 'BRAULIO\MSSQLSERVER2', // replace this with your IP Server
+  database: 'ECOMMERCE',
+  port: 1433, // this is optional, by default takes the port 1433
+  options: { 
+      encrypt: false // this is optional, by default is false
+  } 
+});
 
-// Configuración de la conexión a la base de datos
-const config = {
-  user: "BRAULIO",
-  password: "",
-  server: "localhost",
-  database: "ECOMMERCE",
-  options: {
-    encrypt: true, // Si estás utilizando una conexión segura (SSL/TLS)
-    trustServerCertificate: false, // Si estás utilizando una conexión segura (SSL/TLS)
-  },
-};
-
-// Función para conectar a la base de datos
-async function conectarBaseDeDatos() {
-  try {
-    await sql.connect(config);
-    console.log("Conectado a la base de datos SQL Server");
-  } catch (error) {
-    console.error("Error al conectar a la base de datos:", error);
-  }
+module.exports = {
+  rest
 }
-
-// Exporta la función para que pueda ser utilizada desde otros módulos
-export { conectarBaseDeDatos };

@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import type { Pais, Idioma } from "../data/api";
 import { paises, idiomas } from "../data/api";
 import Logo from "../icons/Logo.astro";
 ---
@@ -20,8 +19,13 @@ import Logo from "../icons/Logo.astro";
             <p>Paso 1 de 2</p>
           </div>
           <div class="py-5">
-            <label for="region" class="text-gray-600 pb-1 block">Región</label>
-            <select id="region" class="border-2 w-full p-2 rounded-lg">
+            <label for="RegionID" class="text-gray-600 pb-1 block">Región</label
+            >
+            <select
+              id="RegionID"
+              name="RegionID"
+              class="border-2 w-full p-2 rounded-lg"
+            >
               <option>Selecciona la región</option>
               {
                 paises.map((pais) => (
@@ -32,7 +36,11 @@ import Logo from "../icons/Logo.astro";
           </div>
           <div class="py-5">
             <label for="idioma" class="text-gray-600 pb-1 block">Idioma</label>
-            <select id="idioma" class="border-2 w-full p-2 rounded-lg">
+            <select
+              id="IdiomaID"
+              name="IdiomaID"
+              class="border-2 w-full p-2 rounded-lg"
+            >
               <option>Seleccionar idioma</option>
               {
                 idiomas.map((idioma) => (
@@ -45,7 +53,8 @@ import Logo from "../icons/Logo.astro";
             <label for="nombre" class="text-gray-600 pb-1 block">Nombre</label>
             <input
               type="text"
-              id="nombre"
+              id="Nombre"
+              name="Nombre"
               class="border-2 w-full p-2 rounded-lg"
             />
           </div>
@@ -55,7 +64,8 @@ import Logo from "../icons/Logo.astro";
             >
             <input
               type="text"
-              id="apellido"
+              id="Apellido"
+              name="Apellido"
               class="border-2 w-full p-2 rounded-lg"
             />
           </div>
@@ -90,3 +100,23 @@ import Logo from "../icons/Logo.astro";
     </div>
   </div>
 </Layout>
+
+<script>
+  // Dentro de un <script> en tu archivo .astro o en un archivo JS separado
+  async function registrarUsuario(data: any) {
+    try {
+      const response = await fetch("/registerV1", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const result = await response.json();
+      console.log(result);
+      // Maneja la respuesta - por ejemplo, redirigir al usuario o mostrar un mensaje
+    } catch (error) {
+      console.error("Error al registrar el usuario:", error);
+    }
+  }
+</script>
