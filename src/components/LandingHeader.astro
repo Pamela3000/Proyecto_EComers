@@ -62,31 +62,7 @@ import Logo from "./Logo.astro"
     `}
   >
   </div>
-</header>
-
-<script >
-  const menuBtn = document.getElementById('menu-btn');
-  const modalMenu = document.querySelector("#modal-menu")
-  const menuItems = modalMenu.querySelectorAll('li>a ');
-  const closeBtn = document.querySelector("#close-btn")
-  
-  function toggleDropdownMenu() {
-    modalMenu.classList.toggle('hidden');
-  }
-
-
-  menuBtn.addEventListener('click',toggleDropdownMenu)
-
-  closeBtn.addEventListener('click',toggleDropdownMenu)
-
-  menuItems.forEach(Item => {
-    Item.addEventListener('click',toggleDropdownMenu);
-});
-
-
-
-</script>
-
+</header
 
 <script>
   const listItem = document.querySelectorAll("#landing-header li")
@@ -124,9 +100,7 @@ import Logo from "./Logo.astro"
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       const { isIntersecting } = entry
-      if (isIntersecting) {
-        const color = entry.target.getAttribute("data-header-color")
-        headerEl.style.color = color
+      if (isIntersecting) {        const color = entry.target.getAttribute("data-header-color")
       }
     })
   }, observerOptions)
