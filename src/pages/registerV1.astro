@@ -1,0 +1,122 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { paises, idiomas } from "../data/api";
+import Logo from "../icons/Logo.astro";
+---
+
+<Layout title="Registro">
+  <div class="float-left w-50 h-50 p-4 m-auto"><Logo /></div>
+  <div class="container mx-auto p-6">
+    <div
+      class="max-w-md mx-auto bg-white rounded-lg overflow-hidden md:max-w-lg"
+    >
+      <div class="md:flex">
+        <div class="w-full p-5">
+          <div class="text-center">
+            <h1 class="text-gray-800 font-bold text-2xl mb-1">
+              Crear una cuenta
+            </h1>
+            <p>Paso 1 de 2</p>
+          </div>
+          <div class="py-5">
+            <label for="RegionID" class="text-gray-600 pb-1 block">Región</label
+            >
+            <select
+              id="RegionID"
+              name="RegionID"
+              class="border-2 w-full p-2 rounded-lg"
+            >
+              <option>Selecciona la región</option>
+              {
+                paises.map((pais) => (
+                  <option value={pais.codigo}>{pais.nombre}</option>
+                ))
+              }
+            </select>
+          </div>
+          <div class="py-5">
+            <label for="idioma" class="text-gray-600 pb-1 block">Idioma</label>
+            <select
+              id="IdiomaID"
+              name="IdiomaID"
+              class="border-2 w-full p-2 rounded-lg"
+            >
+              <option>Seleccionar idioma</option>
+              {
+                idiomas.map((idioma) => (
+                  <option value={idioma.codigo}>{idioma.nombre}</option>
+                ))
+              }
+            </select>
+          </div>
+          <div class="py-5">
+            <label for="nombre" class="text-gray-600 pb-1 block">Nombre</label>
+            <input
+              type="text"
+              id="Nombre"
+              name="Nombre"
+              class="border-2 w-full p-2 rounded-lg"
+            />
+          </div>
+          <div class="py-5">
+            <label for="apellido" class="text-gray-600 pb-1 block"
+              >Apellido</label
+            >
+            <input
+              type="text"
+              id="Apellido"
+              name="Apellido"
+              class="border-2 w-full p-2 rounded-lg"
+            />
+          </div>
+          <div class="py-5">
+            <label for="captcha" class="text-gray-600 pb-1 block"
+              >Introduzca los caracteres de la imagen</label
+            >
+            <input
+              type="text"
+              id="captcha"
+              class="border-2 w-full p-2 rounded-lg"
+            />
+            <!-- Captcha image here -->
+          </div>
+          <p>
+            Al hacer clic en "Siguiente", aceptas las Condiciones de servicio y
+            la Política de privacidad de Google. Es posible que te enviemos
+            notificaciones por SMS, que puedes desactivar cuando quieras.
+          </p>
+          <div class="py-4">
+            <a href="/registerV2"
+              ><button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+                type="submit"
+              >
+                Siguiente
+              </button></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Dentro de un <script> en tu archivo .astro o en un archivo JS separado
+  async function registrarUsuario(data: any) {
+    try {
+      const response = await fetch("/registerV1", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const result = await response.json();
+      console.log(result);
+      // Maneja la respuesta - por ejemplo, redirigir al usuario o mostrar un mensaje
+    } catch (error) {
+      console.error("Error al registrar el usuario:", error);
+    }
+  }
+</script>

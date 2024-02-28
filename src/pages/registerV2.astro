@@ -1,0 +1,104 @@
+---
+// Aquí puedes importar scripts o componentes adicionales si es necesario.
+import Layout from "../layouts/Layout.astro";
+import Logo from "../icons/Logo.astro";
+---
+
+<Layout title="Crear una cuenta">
+  <div class="float-left w-50 h-50 p-4 m-auto"><Logo /></div>
+  <div class="container mx-auto p-6">
+    <div
+      class="max-w-md mx-auto bg-white rounded-lg overflow-hidden md:max-w-lg"
+    >
+      <div class="md:flex">
+        <div class="w-full p-5">
+          <div class="text-center">
+            <h1 class="text-gray-800 font-bold text-2xl mb-1">
+              Crear una cuenta
+            </h1>
+            <p>Paso 2 de 2</p>
+          </div>
+          <form id="registerForm" method="" action="">
+            <div class="py-5">
+              <label for="email" class="text-gray-600 pb-1 block"
+                >Correo electrónico</label
+              >
+              <input
+                type="email"
+                id="Correo"
+                name="Correo"
+                class="border-2 w-full p-2 rounded-lg"
+                required
+              />
+            </div>
+            <div class="py-5">
+              <label for="password" class="text-gray-600 pb-1 block"
+                >Contraseña</label
+              >
+              <input
+                type="password"
+                id="ContrasenaHash"
+                name="ContrasenaHash"
+                class="border-2 w-full p-2 rounded-lg"
+                required
+              />
+            </div>
+            <div class="py-5">
+              <label for="confirmPassword" class="text-gray-600 pb-1 block"
+                >Confirme contraseña</label
+              >
+              <input
+                type="password"
+                id="confirmPassword"
+                class="border-2 w-full p-2 rounded-lg"
+                required
+              />
+            </div>
+            <div class="flex items-center mb-5">
+              <input
+                id="newsletter"
+                type="checkbox"
+                class="h-4 w-4 text-blue-600 border-gray-300 rounded"
+              />
+              <lab el for="newsletter" class="ml-2 block text-sm text-gray-900">
+                Mantenerme informado
+              </lab>
+            </div>
+            <p>
+              <a href="#" class="text-blue-500 hover:underline"
+                >Términos y condiciones</a
+              >
+            </p>
+            <div class="py-4">
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+                type="submit"
+              >
+                Crear una cuenta
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+<script>
+  // Dentro de un <script> en tu archivo .astro o en un archivo JS separado
+  async function registrarUsuario(data: any) {
+    try {
+      const response = await fetch("/registerV2", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const result = await response.json();
+      console.log(result);
+      // Maneja la respuesta - por ejemplo, redirigir al usuario o mostrar un mensaje
+    } catch (error) {
+      console.error("Error al registrar el usuario:", error);
+    }
+  }
+</script>
