@@ -1,19 +1,24 @@
 import RestMSSQLNodeJS from "rest-mssql-nodejs";
 
 const rest = new RestMSSQLNodeJS({
-  user: "braulio",
-  password: "",
   server: "BRAULIO\\MSSQLSERVER2",
   database: "ECOMMERCE",
-
-  port: 1433, // this is optional, by default takes the port 1433}
+  port: 1433,
   options: {
     trustedConnection: true,
     enableArithAbort: true,
-    encrypt: false,
+    encrypt: true,
   },
 });
-setTimeout(async () => {
-  const result = await rest.executeQuery("SELECT * FROM Usuarios");
-  console.log(result);
-}, 1000);
+
+async function fetchUsuarios() {
+  try {
+    const result = await rest.executeQuery("SELECT * FROM Usuarios");
+    console.log(result);
+  } catch (error) {
+    console.error("Error al ejecutar la consulta:", error);
+  }
+}
+
+// Ejecuta la consulta sin el setTimeout a menos que sea necesario por alguna razón específica.
+fetchUsuarios();
