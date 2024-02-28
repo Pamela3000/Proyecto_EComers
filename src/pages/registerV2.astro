@@ -18,14 +18,15 @@ import Logo from "../icons/Logo.astro";
             </h1>
             <p>Paso 2 de 2</p>
           </div>
-          <form id="registerForm" method="POST" action="/your-endpoint">
+          <form id="registerForm" method="" action="">
             <div class="py-5">
               <label for="email" class="text-gray-600 pb-1 block"
                 >Correo electrónico</label
               >
               <input
                 type="email"
-                id="email"
+                id="Correo"
+                name="Correo"
                 class="border-2 w-full p-2 rounded-lg"
                 required
               />
@@ -36,7 +37,8 @@ import Logo from "../icons/Logo.astro";
               >
               <input
                 type="password"
-                id="password"
+                id="ContrasenaHash"
+                name="ContrasenaHash"
                 class="border-2 w-full p-2 rounded-lg"
                 required
               />
@@ -81,3 +83,22 @@ import Logo from "../icons/Logo.astro";
     </div>
   </div>
 </Layout>
+<script>
+  // Dentro de un <script> en tu archivo .astro o en un archivo JS separado
+  async function registrarUsuario(data: any) {
+    try {
+      const response = await fetch("/registerV2", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const result = await response.json();
+      console.log(result);
+      // Maneja la respuesta - por ejemplo, redirigir al usuario o mostrar un mensaje
+    } catch (error) {
+      console.error("Error al registrar el usuario:", error);
+    }
+  }
+</script>
