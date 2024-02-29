@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { paises, idiomas } from "../data/api";
 import Logo from "../icons/Logo.astro";
+import FooterLogin from "@components/FooterLogin.astro";
 ---
 
 <Layout title="Registro">
@@ -11,7 +12,7 @@ import Logo from "../icons/Logo.astro";
       class="max-w-md mx-auto bg-white rounded-lg overflow-hidden md:max-w-lg"
     >
       <div class="md:flex">
-        <div class="w-full p-5">
+        <div class="w-full p-9">
           <div class="text-center">
             <h1 class="text-gray-800 font-bold text-2xl mb-1">
               Crear una cuenta
@@ -99,6 +100,8 @@ import Logo from "../icons/Logo.astro";
       </div>
     </div>
   </div>
+<FooterLogin>
+</FooterLogin>
 </Layout>
 
 <script>
