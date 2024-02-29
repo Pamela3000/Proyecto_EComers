@@ -7,10 +7,10 @@ select * from Usuarios;
 select * from Regiones;
 select * from Idiomas;
 go
-INSERT INTO Regiones (Nombre) VALUES ('América del Norte'), ('Europa'), ('Asia'), ('América Latina');
+INSERT INTO Regiones (Nombre) VALUES ('Amï¿½rica del Norte'), ('Europa'), ('Asia'), ('Amï¿½rica Latina');
 GO
 
-INSERT INTO Idiomas (Nombre, Codigo) VALUES ('Español', 'ES'), ('Inglés', 'EN'), ('Francés', 'FR'), ('Alemán', 'DE');
+INSERT INTO Idiomas (Nombre, Codigo) VALUES ('Espaï¿½ol', 'ES'), ('Inglï¿½s', 'EN'), ('Francï¿½s', 'FR'), ('Alemï¿½n', 'DE');
 GO
 
 USE master;
@@ -27,7 +27,7 @@ INSERT INTO Usuarios (RegionID, IdiomaID, Nombre, Apellido, Correo, ContrasenaHa
 (3, 2, 'Ana', 'Gonzalez', 'ana.gonzalez@email.com', 0x02000D3A);
 GO
 DECLARE @Password NVARCHAR(50);
-SET @Password = 'tu_contraseña';
+SET @Password = 'tu_contraseï¿½a';
 SELECT HASHBYTES('SHA2_256', @Password);
 
 
@@ -59,7 +59,7 @@ CREATE TABLE Usuarios (
 );
 GO
 
-/* procedimientos almacenados para registro e inicio de sesión */
+/* procedimientos almacenados para registro e inicio de sesiï¿½n */
 CREATE PROCEDURE RegistrarUsuario
     @RegionID INT,
     @IdiomaID INT,
@@ -74,7 +74,7 @@ BEGIN
 END;
 GO
 
-/* procedimiento almacenado que verifica el correo y la contraseña hash: */
+/* procedimiento almacenado que verifica el correo y la contraseï¿½a hash: */
 CREATE PROCEDURE IniciarSesion
     @Correo NVARCHAR(255),
     @ContrasenaHash VARBINARY(256)
