@@ -19,7 +19,11 @@ import FooterLogin from "@components/FooterLogin.astro";
             </h1>
             <p>Paso 2 de 2</p>
           </div>
-          <form id="registerForm" method="" action="">
+          <form
+            id="registerForm"
+            method="POST"
+            action="http://localhost:3000/api/users"
+          >
             <div class="py-5">
               <label for="email" class="text-gray-600 pb-1 block"
                 >Correo electrónico</label
@@ -74,6 +78,7 @@ import FooterLogin from "@components/FooterLogin.astro";
               <button
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
                 type="submit"
+                value="Registro"
               >
                 Crear una cuenta
               </button>
@@ -83,25 +88,5 @@ import FooterLogin from "@components/FooterLogin.astro";
       </div>
     </div>
   </div>
-<FooterLogin>
-</FooterLogin>
+  <FooterLogin />
 </Layout>
-<script>
-  // Dentro de un <script> en tu archivo .astro o en un archivo JS separado
-  async function registrarUsuario(data: any) {
-    try {
-      const response = await fetch("/registerV2", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      const result = await response.json();
-      console.log(result);
-      // Maneja la respuesta - por ejemplo, redirigir al usuario o mostrar un mensaje
-    } catch (error) {
-      console.error("Error al registrar el usuario:", error);
-    }
-  }
-</script>
