@@ -1,77 +1,216 @@
 ---
 import Logo from "@icons/Logo.astro";
 import Layout from "../layouts/Layout.astro";
-import FooterLogin from "../components/FooterLogin.astro"
+import FooterLogin from "@components/FooterLogin.astro";
 ---
 
-<Layout title="Login">
-
-  <header id="landing-header"
-  class="py-3 px-10 flex items-center fixed top-0 w-full justify-between z-40 bg-gray-100"
+<Layout title="Sign In" companyName="E Corp">
+  <header
+    id="landing-header"
+    class="py-3 px-5 sm:px-1 flex items-center fixed top-0 w-full justify-between z-40 bg-white"
   >
-  <div class="flex flex-grow basis-0">
-    <a href="./"><Logo /></a>
+    <div class="flex flex-grow basis-0">
+      <a class="h-8 w-10 sm:h-10" href="/">
+        <Logo />
+      </a>
     </div>
   </header>
+  <main class="flex-grow mt-11">
+    <div
+      class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8"
+    >
+      <div class="max-w-md w-full space-y-8">
+        <form
+          class="mt-8 space-y-6 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          id="loginForm"
+          method="POST"
+        >
+          <div id="error-message" class="text-red-500"></div>
 
+          <h1 class="tds-text--h1-alt tds-text-eyebrow text-4xl">Sign In</h1>
+          <input type="hidden" name="remember" value="true" />
+          <div class="rounded-md shadow-sm space-y-4">
+            <div>
+              <label for="Correo" class="">Email</label>
 
-  <div class="min-h-screen flex items-center justify-center bg-gray-100">
-    <div class="max-w-md w-full space-y-8">
+              <div class="relative">
+                <input
+                  id="Correo"
+                  name="Correo"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  placeholder="Enter email"
+                />
 
-      
-        <h1 class="tds-text--h1-alt tds-text-eyebrow">Ingresa</h1>
-      
-      <form class="mt-8 space-y-6" action="#" method="POST">
-        <input type="hidden" name="remember" value="true" />
-        <div class="rounded-md shadow-sm -space-y-px">
+                <span
+                  class="absolute inset-y-0 end-0 grid place-content-center px-4"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="size-4 text-gray-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                    ></path>
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <label for="ContrasenaHash" class="mt-4 mb-4">Password</label>
+              <div class="relative">
+                <input
+                  id="ContrasenaHash"
+                  name="ContrasenaHash"
+                  type="password"
+                  autocomplete="current-password"
+                  required
+                  class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  placeholder="Enter password"
+                />
+
+                <span
+                  class="absolute inset-y-0 end-0 grid place-content-center px-4"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="size-4 text-gray-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    ></path>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
           <div>
-            <label for="email-address" class="sr-only"></label>
-            <input
-              id="email-address"
-              name="email"
-              type="email"
-              autocomplete="email"
-              required
-              class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-              placeholder="Email"
-            />
+            <button
+              type="submit"
+              class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-700 hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Sign In
+            </button>
           </div>
-        </div>
+          <div class="text-center space-y-70 -space-y-70">
+            <a
+              href="#"
+              class="font-medium text-indigo-600 hover:text-indigo-500 relative inline-block"
+              >Trouble signing in?</a
+            >
 
-        <!-- Aquí iría el captcha, pero como no podemos hacer llamadas a la API, solo colocaremos un placeholder -->
-        <div class="flex justify-center">
-          <div class="bg-gray-200 rounded p-4 text-center">
-            CAPTCHA 
+            <div class="flex items-center justify-center mt-14 mb-10 mx-auto">
+              <!-- Aumenta los márgenes -->
+              <div class="border-t border-gray-300 flex-grow mr-4"></div>
+              <span
+                class="text-gray-500 text-sm"
+                data-i18n-key="pageSeparatorOrLabel">Or</span
+              >
+              <div class="border-t border-gray-300 flex-grow ml-4"></div>
+            </div>
+
+            <button
+              onclick="location.href='/register';"
+              class="w-full text-sm font-medium py-2 px-4 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+            >
+              Create Account
+            </button>
           </div>
-        </div>
-
-        <div>
-          <button
-            type="submit"
-            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            Next
-          </button>
-        </div>
-      </form>
-      <div class="flex items-center justify-between">
-        <div class="text-sm">
-          <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
-            Trouble signing in?
-          </a>
-        </div>
-
-        <div class="text-sm">
-          <a
-            href="/registerV1"
-            class="font-medium text-indigo-600 hover:text-indigo-500"
-          >
-            Create Account
-          </a>
-        </div>
+        </form>
       </div>
     </div>
+  </main>
+  <div>
+    <FooterLogin />
   </div>
-<FooterLogin>
-</FooterLogin>
+  // login.astro
+  <script>
+    window.addEventListener("DOMContentLoaded", (event) => {
+      const form = document.getElementById("loginForm") as HTMLFormElement;
+      const errorMessageElement = document.getElementById("error-message");
+
+      if (form) {
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const formData = new FormData(form);
+          const formJSON = Object.fromEntries(formData.entries());
+
+          try {
+            const response = await fetch("http://localhost:3000/api/login", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formJSON),
+            });
+
+            if (!response.ok) {
+              throw new Error(
+                `Contraseña o Correo Invalidos: ${response.status} Unauthorized`,
+              );
+            } else {
+              const contentType = response.headers.get("content-type");
+              if (
+                contentType &&
+                contentType.indexOf("application/json") !== -1
+              ) {
+                const data = await response.json();
+                // Aquí puedes guardar el token JWT en localStorage o en una cookie
+                localStorage.setItem("token", data.token);
+              } else {
+                throw new Error("Invalid content type: " + contentType);
+              }
+            }
+            window.location.href = "/ecorpaccount";
+            console.log(
+              "Formulario enviado: " + JSON.stringify(formJSON, null, 2),
+            );
+          } catch (error) {
+            console.error("Ha ocurrido un error:", error);
+            if (errorMessageElement) {
+              errorMessageElement.textContent = (error as Error).message;
+            }
+          }
+        });
+      }
+    });
+  </script>
+  <style>
+    a::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background: currentColor;
+      transition: width 0.5s;
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+    }
+
+    a:hover::after {
+      width: 100%;
+    }
+  </style>
 </Layout>

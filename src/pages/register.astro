@@ -1,0 +1,266 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Logo from "../icons/Logo.astro";
+import FooterLogin from "@components/FooterLogin.astro";
+---
+
+<Layout title="Registro" companyName="E Corp">
+  <header
+    id="landing-header"
+    class="py-3 px-5 sm:px-1 flex items-center fixed top-0 w-full justify-between z-40 bg-white"
+  >
+    <div class="flex flex-grow basis-0">
+      <a class="h-8 w-10 sm:h-10" href="/">
+        <Logo />
+      </a>
+    </div>
+  </header>
+  <main class="min-h-screen flex items-center justify-center">
+    <form
+      id="registerForm"
+      method="POST"
+      action="/ecorpaccount"
+      class="container mx-auto p-6"
+    >
+      <div
+        class="max-w-md mx-auto bg-white rounded-lg overflow-hidden md:max-w-lg shadow-md"
+      >
+        <div class="md:flex">
+          <div class="w-full p-9">
+            <div class="text-center">
+              <h1 class="text-gray-800 font-bold text-2xl mb-1">
+                Crear una cuenta
+              </h1>
+              <p class="mb-4 text-gray-600">
+                Únete a nosotros para una nueva experiencia
+              </p>
+            </div>
+            <div class="space-y-5">
+              <label
+                for="Nombre"
+                class="block overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+              >
+                <span class="text-xs font-medium text-gray-700">
+                  Nombre completo
+                </span>
+
+                <input
+                  type="text"
+                  id="Nombre"
+                  name="Nombre"
+                  placeholder="Nombre"
+                  autocomplete="give-name"
+                  class="mt-1 w-full border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+                />
+              </label>
+              <label
+                for="Apellido"
+                class="block overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+              >
+                <span class="text-xs font-medium text-gray-700">
+                  Apellidos
+                </span>
+
+                <input
+                  type="text"
+                  id="Apellido"
+                  name="Apellido"
+                  placeholder="Apellido"
+                  autocomplete="family-name"
+                  class="mt-1 w-full border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+                />
+              </label>
+              <div>
+                <label for="Correo" class="text-gray-600 pb-1 block"
+                  >Correo electrónico</label
+                >
+                <div class="relative">
+                  <input
+                    id="Correo"
+                    name="Correo"
+                    type="email"
+                    autocomplete="email"
+                    required
+                    class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                    placeholder="Enter email"
+                  />
+
+                  <span
+                    class="absolute inset-y-0 end-0 grid place-content-center px-4"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="size-4 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                      ></path>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <div>
+                <label for="ContrasenaHash" class="text-gray-600 pb-1 block"
+                  >Contraseña</label
+                >
+                <div class="relative">
+                  <input
+                    id="ContrasenaHash"
+                    name="ContrasenaHash"
+                    type="password"
+                    autocomplete="current-password"
+                    required
+                    class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                    placeholder="Enter password"
+                  />
+
+                  <span
+                    class="absolute inset-y-0 end-0 grid place-content-center px-4"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="size-4 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      ></path>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <div>
+                <label for="Contrasena" class="text-gray-600 pb-1 block"
+                  >Confime su Contraseña</label
+                >
+                <div class="relative">
+                  <input
+                    id="Contrasena"
+                    name="Contrasena"
+                    type="password"
+                    autocomplete="current-password"
+                    required
+                    class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                    placeholder="Confirma password"
+                  />
+
+                  <span
+                    class="absolute inset-y-0 end-0 grid place-content-center px-4"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="size-4 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      ></path>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <div class="flex items-center mb-5">
+                <input
+                  id="newsletter"
+                  type="checkbox"
+                  class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                />
+                <label
+                  for="newsletter"
+                  class="ml-2 block text-sm text-gray-900"
+                >
+                  Mantenerme informado</label
+                >
+              </div>
+              <p>
+                <a href="#" class="text-blue-500 hover:underline"
+                  >Términos y condiciones</a
+                >
+              </p>
+              <p class="text-sm text-gray-600">
+                Al hacer clic en "Crear una cuenta", aceptas nuestras
+                Condiciones de servicio y la Política de privacidad.
+              </p>
+              <button
+                class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+                type="submit">Crear una cuenta</button
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <div>
+    <FooterLogin />
+  </div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", (event) => {
+      const form = document.getElementById("registerForm") as HTMLFormElement;
+
+      if (form) {
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const formData = new FormData(form);
+
+          // Convertir FormData a JSON
+          const formJSON = Object.fromEntries(formData.entries());
+
+          try {
+            const response = await fetch("http://localhost:3000/register", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formJSON),
+            });
+
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const user = await response.json();
+
+            console.log(user); // Muestra los datos del usuario
+          } catch (error) {
+            console.error("Ha ocurrido un error:", error);
+          } finally {
+            window.location.href = "/ecorpaccount";
+          }
+        });
+      }
+    });
+  </script>
+</Layout>
