@@ -6,7 +6,7 @@ export interface Props {
 const { title } = Astro.props;
 
 import LandingAccount from "../components/LandingAccount.astro";
-import Sidebar from "../components/Sidebar.astro";
+import SidebarInventory from "../components/SidebarInventory.astro";
 import FooterLogin from "@components/FooterLogin.astro";
 ---
 
@@ -27,7 +27,7 @@ import FooterLogin from "@components/FooterLogin.astro";
     <div class="pt-16 flex min-h-screen">
       <!-- Barra lateral fija -->
       <aside class="fixed inset-y-0 left-0 w-60 z-20">
-        <Sidebar />
+        <SidebarInventory />
       </aside>
 
       <!-- Contenedor para el contenido principal -->

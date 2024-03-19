@@ -1,0 +1,142 @@
+---
+import More from "@icons/More.astro";
+import ModalsEmail from "../components/Modals/ModalsEmail.astro";
+import ModalsUsers from "../components/Modals/ModalsUsers.astro";
+import ModalsAddress from "../components/Modals/ModalsAddress.astro";
+import ModalsPhone from "../components/Modals/ModalsPhone.astro";
+---
+
+<section class="max-w-4xl mx-auto my-10">
+  <div class="container mx-auto px-4">
+    <h1 class="text-2xl font-semibold mb-6">Dashboard</h1>
+    <div class="container mx-auto mt-10 p-5 bg-white shadow rounded">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="mb-4">
+          <span class="block text-gray-600 text-sm font-bold mb-2"
+            >Nombre Completo</span
+          >
+
+          <span class="">Nombre</span>
+          <ModalsUsers />
+          <a
+            href="#"
+            onclick="my_modal_0.showModal()"
+            class="font-medium text-black-600 hover:text-black-500 relative inline-block"
+            >Edit</a
+          >
+        </div>
+        <div class="mb-4">
+          <span class="block text-gray-600 text-sm font-bold mb-2">Address</span
+          >
+          <ModalsAddress />
+          <a
+            href="#"
+            onclick="my_modal_1.showModal()"
+            class="font-medium text-black-600 hover:text-black-500 relative inline-block"
+            ><More />Add New</a
+          >
+        </div>
+
+        <div class="mb-4">
+          <span
+            title="Used for communications"
+            class="block text-gray-600 text-sm font-bold mb-2"
+            >Contact Phone Number
+          </span>
+          <ModalsPhone/>
+          <a
+            href="#"
+            onclick="my_modal_2.showModal()"
+            class="font-medium text-black-600 hover:text-black-500 relative inline-block"
+            ><More />Add New</a
+          >
+        </div>
+      </div>
+      <div class="mb-4">
+        <a
+          href="#"
+          class="font-medium text-gray-600 hover:text-black-500 relative inline-block mt-11"
+          >Shareholder Preferences</a
+        >
+      </div>
+    </div>
+    <div class="container mx-auto mt-10 p-5 bg-white shadow rounded">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="mb-4">
+          <span class="block text-gray-600 text-sm font-bold mb-2">Email</span>
+
+          <span class="">Correo</span>
+
+          <ModalsEmail />
+          <a
+            href="#"
+            onclick="window.openModal()"
+            class="font-medium text-black-600 hover:text-black-500 relative inline-block"
+            >Edit</a
+          >
+        </div>
+        <div class="mb-4">
+          <span class="block text-gray-600 text-sm font-bold mb-2"
+            >Password</span
+          >
+
+          <span class="text-gray-500 text-lg font-bold tracking-widest"
+            >*******</span
+          >
+          <a
+            href="#"
+            class="font-medium text-black-600 hover:text-black-500 relative inline-block"
+            >Reset</a
+          >
+        </div>
+        <div class="mb-4">
+          <span class="block text-gray-600 text-sm font-bold mb-2"
+            >Multi-factor Authentication
+          </span>
+
+          <span class=""
+            >Add an additional layer of security to your account</span
+          >
+          <a
+            href="#"
+            class="font-medium text-black-600 hover:text-black-500 relative inline-block"
+            >Manage</a
+          >
+        </div>
+      </div>
+      <div class="mb-4">
+        <a
+          href="#"
+          class="font-medium text-gray-600 hover:text-black-500 relative inline-block mt-11"
+          >Manage Third Party Apps</a
+        >
+      </div>
+      <div class="mb-4">
+        <a
+          href="#"
+          class="font-medium text-gray-600 hover:text-black-500 relative inline-block mt-11"
+          >Delete Account</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/modal.js" defer></script>
+
+<style>
+  a::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.5s;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+  }
+
+  a:hover::after {
+    width: 100%;
+  }
+</style>

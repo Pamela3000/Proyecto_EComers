@@ -1,0 +1,20 @@
+---
+import LayoutAccount from "../layouts/LayoutAccount.astro";
+import OrderHistory from "../components/OrderHistory.astro";
+---
+
+<LayoutAccount title="Ecorp Account">
+  <!-- Encabezado fijo -->
+  <header></header>
+
+  <!-- Contenedor principal con padding-top para el encabezado -->
+  <div>
+    <!-- Barra lateral fija -->
+    <aside></aside>
+
+    <!-- Contenedor para el contenido principal -->
+    <main class="">
+      <OrderHistory />
+    </main>
+  </div>
+</LayoutAccount>

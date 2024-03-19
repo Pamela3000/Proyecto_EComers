@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="" />
+<div class="container mx-auto mt-8">
+  <div class="flex flex-col lg:flex-row items-center lg:items-start">
+    <!-- Image Section -->
+    <div class="flex-1">
+      <img
+        src="path_to_your_car_image.jpg"
+        alt="Model Y"
+        class="w-full lg:w-3/5 rounded-lg shadow-lg"
+      />
+    </div>
+
+    <!-- Details Section -->
+    <div class="flex-1 mt-8 lg:mt-0 lg:ml-8">
+      <div class="text-right">
+        <!-- Price and Savings -->
+        <div class="text-2xl font-bold">$41,150 Vehicle Price</div>
+        <div class="text-lg text-gray-600">
+          Eligible for $7,500 EV Lease Incentive and Business Tax Credit
+        </div>
+        <div class="text-lg">$37,550 After Probable Savings</div>
+
+        <!-- Vehicle Specs -->
+        <div class="mt-8">
+          <div class="text-4xl font-bold">Model Y</div>
+          <div class="text-lg">Model Y Rear-Wheel Drive</div>
+          <ul class="mt-4">
+            <li class="flex justify-between">
+              <span class="font-medium">Range (est.):</span>
+              <span>242 mi</span>
+            </li>
+            <li class="flex justify-between">
+              <span class="font-medium">Top Speed:</span>
+              <span>135 mph</span>
+            </li>
+            <li class="flex justify-between">
+              <span class="font-medium">0-60 mph:</span>
+              <span>6.6 sec</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Vehicle Details -->
+        <div class="mt-8 bg-gray-100 p-4 rounded-lg">
+          <div class="font-bold">Vehicle Details</div>
+          <ul class="mt-2">
+            <li>Demo Vehicle</li>
+            <li>442 mile odometer</li>
+            <li>Red Multi-Coat Paint</li>
+            <li>20" Induction Wheels</li>
+            <li>Black and White Premium Interior</li>
+            <li>Autopilot</li>
+            <li>Five Seat Interior</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
