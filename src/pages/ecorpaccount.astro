@@ -1,0 +1,24 @@
+---
+import Logo from "@icons/Logo.astro";
+import Layoutaccount from "../layouts/Layoutaccount.astro";
+import LandingAccount from "../components/LandingAccount.astro";
+import Sidebar from "../components/Sidebar.astro";
+import FooterMenu from "@components/FooterMenu.astro";
+import MainAccountDashboard from "@components/MainAccountDashboard.astro";
+---
+
+<Layoutaccount title="Ecorp Account" companyName="Ecorp">
+  <!-- Encabezado fijo -->
+  <header></header>
+
+  <!-- Contenedor principal con padding-top para el encabezado -->
+  <div>
+    <!-- Barra lateral fija -->
+    <aside></aside>
+
+    <!-- Contenedor para el contenido principal -->
+    <main class="flex-1 ml-50 p-10">
+      <MainAccountDashboard />
+    </main>
+  </div>
+</Layoutaccount>

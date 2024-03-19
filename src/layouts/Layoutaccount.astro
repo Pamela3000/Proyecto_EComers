@@ -6,6 +6,12 @@ export interface Props {
 
 const { title } = Astro.props;
 const { companyName } = Astro.props;
+
+import Layout from "../layouts/Layout.astro";
+import LandingAccount from "../components/LandingAccount.astro";
+import Sidebar from "../components/Sidebar.astro";
+import FooterMenu from "@components/FooterMenu.astro";
+import MainAccountDashboard from "@components/MainAccountDashboard.astro";
 ---
 
 <!doctype html>
@@ -18,7 +24,26 @@ const { companyName } = Astro.props;
     <title>{title} - E Corp</title>
   </head>
   <body>
-    <slot />
+    <header class="fixed top-0 left-0 right-0 z-30 h-16">
+      <LandingAccount />
+    </header>
+    <!-- Contenedor principal con padding-top para el encabezado -->
+    <div class="pt-16 flex min-h-screen">
+      <!-- Barra lateral fija -->
+      <aside class="fixed inset-y-0 left-0 w-60 bg-white shadow z-20">
+        <Sidebar />
+      </aside>
+
+      <!-- Contenedor para el contenido principal -->
+      <main class="flex-1 ml-50 p-10">
+        <slot />
+      </main>
+    </div>
+
+    <!-- Pie de página fijo -->
+    <footer class="fixed bottom-0 left-0 right-0 z-30 bg-white shadow-up-md">
+      <FooterMenu />
+    </footer>
   </body>
 </html>
 
