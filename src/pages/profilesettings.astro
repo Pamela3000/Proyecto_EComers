@@ -1,0 +1,28 @@
+---
+import Layoutaccount from "@layouts/LayoutAccount.astro";
+import ProfileSetteings from "@components/ProfileSetteings.astro";
+---
+
+<Layoutaccount title="Profile">
+  <main class="">
+    <ProfileSetteings />
+  </main>
+
+  <style>
+    a::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background: currentColor;
+      transition: width 0.5s;
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+    }
+
+    a:hover::after {
+      width: 100%;
+    }
+  </style>
+</Layoutaccount>

@@ -1,0 +1,99 @@
+---
+interface Idioma {
+  Codigo: string;
+  Nombre: string;
+  Dial_Code: string;
+}
+const getIdiomas = async () => {
+  const response = await fetch("http://localhost:3000/api/idiomas");
+  const data = await response.json();
+  return data;
+};
+let idiomas = await getIdiomas();
+---
+
+<!-- Open the modal using ID.showModal() method -->
+<dialog
+  id="my_modal_2"
+  class="modal modal-bottom fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm"
+  role="dialog"
+  aria-modal="true"
+>
+  <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex sm:pl-16">
+    <div class="w-screen max-w-md">
+      <div class="h-full flex flex-col bg-white overflow-y-scroll">
+        <div class="modal-box">
+          <h3 class="font-bold text-lg">Hello!</h3>
+          <p class="py-4"></p>
+          <h3
+            class="text-2xl md:text-3xl font-semibold text-gray-800 leading-tight tracking-tighter"
+          >
+            Add Phone Number
+          </h3>
+          <div class="modal-action">
+            <form method="dialog">
+              <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <!-- Modal header -->
+
+                <!-- Modal content -->
+                <div class="flex flex-col space-y-4 p-6 rounded-lg">
+                  <div class="flex flex-col space-y-2">
+                    <label
+                      for="phone"
+                      class="text-lg font-semibold text-gray-700"
+                      >Contact Phone Number</label
+                    >
+                    <div class="relative">
+                      <!-- Dropdown para los códigos de idioma -->
+                      <select
+                        id="Idiomas"
+                        name="Idiomas"
+                        class="absolute inset-y-0 left-0 w-32 pl-3 form-select focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pr-7 bg-transparent text-gray-500 sm:text-sm rounded-l-md"
+                      >
+                        {
+                          idiomas.map((idioma: Idioma) => (
+                            <option
+                              value={idioma.Codigo}
+                              class="px-4 py-4 text-gray-600"
+                            >
+                              {idioma.Codigo} - {idioma.Nombre} {"  "}(
+                              {idioma.Dial_Code})
+                            </option>
+                          ))
+                        }
+                      </select>
+
+                      <!-- Campo de texto para el número de teléfono -->
+                      <input
+                        type="tel"
+                        name="Telefono"
+                        id="Telefono"
+                        class="form-input block w-full sm:text-md pl-36 rounded-none rounded-r-md input input-bordered max-w-xs"
+                        placeholder="79 56 12 34"
+                      />
+                    </div>
+
+                    <p class="text-xs text-red-500"></p>
+                  </div>
+                </div>
+
+                <!-- Idioma -->
+
+                <!-- Address Line  -->
+              </div>
+              <div class="modal-action mt-11 flex justify-start">
+                <button class="btn">Close</button>
+                <button
+                  type="submit"
+                  class="btn bg-blue-600 hover:bg-blue-700 text-white ml-2"
+                >
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</dialog>

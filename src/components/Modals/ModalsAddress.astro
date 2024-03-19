@@ -1,0 +1,162 @@
+---
+interface Idioma {
+  Codigo: string;
+  Nombre: string;
+  Dial_Code: string;
+}
+const getIdiomas = async () => {
+  const response = await fetch("http://localhost:3000/api/idiomas");
+  const data = await response.json();
+  return data;
+};
+let idiomas = await getIdiomas();
+
+interface Region {
+  Codigo: string;
+  Nombre: string;
+}
+const getRegiones = async () => {
+  const response = await fetch("http://localhost:3000/api/regiones");
+  const data = await response.json();
+  return data;
+};
+let regiones = await getRegiones();
+---
+
+<!-- Open the modal using ID.showModal() method -->
+<dialog
+  id="my_modal_1"
+  class="modal modal-bottom sm:modal-middle fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm"
+>
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Hello!</h3>
+    <p class="py-4">Press ESC key or click the button below to close</p>
+    <h3
+      class="text-2xl md:text-3xl font-semibold text-gray-800 leading-tight tracking-tighter"
+    >
+      Add Address
+      <div role="alert" class="alert">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          class="stroke-current shrink-0 w-6 h-6"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path></svg
+        >
+        <span class="text-sm"
+          >This will update your information for all vehicles
+        </span>
+      </div>
+    </h3>
+    <div class="modal-action">
+      <form method="dialog">
+        <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <!-- Modal header -->
+
+          <!-- Modal content -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <!-- Region -->
+            <div class="md:col-span-1">
+              <label class="block text-gray-700 mb-2 mt-2" for="first-name">
+                Regiones
+              </label>
+              <label class="form-control w-full max-w-xs">
+                <div class="label">
+                  <span class="label-text">Select your region</span>
+                  <span class="label-text-alt"></span>
+                </div>
+                <select class="select select-bordered">
+                  <option disabled selected>Pick one</option>
+                  <option>
+                    {
+                      regiones.map((region: Region) => (
+                        <option
+                          value={region.Codigo}
+                          class="px-4 py-4 text-gray-600"
+                        >
+                          {region.Nombre}
+                        </option>
+                      ))
+                    }
+                  </option>
+                </select>
+                <div class="label">
+                  <span class="label-text-alt">Continents</span>
+                  <span class="label-text-alt">World</span>
+                </div>
+              </label>
+            </div>
+
+            <!-- Idioma -->
+            <div class="md:col-span-2">
+              <label class="block text-gray-700 mb-2 mt-2" for="middle-name">
+                Language
+              </label>
+              <label class="form-control w-full max-w-xs">
+                <div class="label">
+                  <span class="label-text">Select your Language</span>
+                  <span class="label-text-alt"></span>
+                </div>
+                <select class="select select-bordered">
+                  <option disabled selected>Pick one</option>
+                  <option>
+                    {
+                      idiomas.map((idioma: Idioma) => (
+                        <option
+                          value={idioma.Codigo}
+                          class="px-4 py-4 text-gray-600"
+                        >
+                          {idioma.Nombre}
+                        </option>
+                      ))
+                    }</option
+                  >
+                </select>
+                <div class="label">
+                  <span class="label-text-alt">Country</span>
+                  <span class="label-text-alt">Language</span>
+                </div>
+              </label>
+            </div>
+
+            <!-- Address Line  -->
+            <div class="md:col-span-4 md:row-span-4">
+              <label class="block text-gray-700 mb-2" for="last-name">
+                Address Line
+              </label>
+              <label class="form-control w-full max-w-xs">
+                <div class="label">
+                  <span class="label-text">What is your address?</span>
+                  <span class="label-text-alt">City</span>
+                </div>
+                <input
+                  type="text"
+                  placeholder="Type here"
+                  class="input input-bordered w-full max-w-xs"
+                />
+                <div class="label">
+                  <span class="label-text-alt">State</span>
+                  <span class="label-text-alt">Zip Code</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="modal-action mt-11 flex justify-start">
+            <button class="btn">Close</button>
+            <button
+              type="submit"
+              class="btn bg-blue-600 hover:bg-blue-700 text-white ml-2"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</dialog>
