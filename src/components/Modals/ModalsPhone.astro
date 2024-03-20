@@ -31,10 +31,9 @@ let idiomas = await getIdiomas();
             Add Phone Number
           </h3>
           <div class="modal-action">
-            <form method="dialog">
+            <form method="POST" action="" id="AddressInfoForm">
               <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <!-- Modal header -->
-
                 <!-- Modal content -->
                 <div class="flex flex-col space-y-4 p-6 rounded-lg">
                   <div class="flex flex-col space-y-2">
@@ -46,8 +45,8 @@ let idiomas = await getIdiomas();
                     <div class="relative">
                       <!-- Dropdown para los códigos de idioma -->
                       <select
-                        id="Idiomas"
-                        name="Idiomas"
+                        id="Nombre"
+                        name="Nombre"
                         class="absolute inset-y-0 left-0 w-32 pl-3 form-select focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pr-7 bg-transparent text-gray-500 sm:text-sm rounded-l-md"
                       >
                         {
@@ -66,8 +65,8 @@ let idiomas = await getIdiomas();
                       <!-- Campo de texto para el número de teléfono -->
                       <input
                         type="tel"
-                        name="Telefono"
                         id="Telefono"
+                        name="Telefono"
                         class="form-input block w-full sm:text-md pl-36 rounded-none rounded-r-md input input-bordered max-w-xs"
                         placeholder="79 56 12 34"
                       />
@@ -97,3 +96,43 @@ let idiomas = await getIdiomas();
     </div>
   </section>
 </dialog>
+<script>
+  window.addEventListener("DOMContentLoaded", (event) => {
+    const form = document.getElementById("AddressInfoForm") as HTMLFormElement;
+    const errorMessageElement = document.getElementById("error-message");
+
+    if (form) {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const Nombre = (form.elements.namedItem("Nombre") as HTMLInputElement)
+          ?.value;
+        const Telefono = (
+          form.elements.namedItem("Telefono") as HTMLInputElement
+        )?.value;
+
+        const formJSON = { Nombre, Telefono };
+        console.log("Form JSON: ", JSON.stringify(formJSON, null, 2));
+
+        try {
+          const response = await fetch("http://localhost:3000/api/users", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formJSON),
+          });
+          window.location.href = "/profilesettings";
+          console.log("Form JSON: " + JSON.stringify(formJSON, null, 2));
+
+          // Resto del código...
+        } catch (error) {
+          console.error("Ha ocurrido un error:", error);
+          if (errorMessageElement) {
+            errorMessageElement.textContent = (error as Error).message;
+          }
+        }
+      });
+    }
+  });
+</script>

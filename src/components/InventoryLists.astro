@@ -1,69 +1,45 @@
 ---
 // Hacemos una solicitud a la API para obtener los datos
-const response = await fetch("http://localhost:3000/api/vehiculos");
+const response = await fetch("http://localhost:3000/api/productos");
 let data = await response.json();
-
-// Convertimos el buffer de la imagen en una cadena de datos base64
-data = data.map((item) => {
-  let base64Image = "";
-  if (item.Imagen && item.Imagen.data) {
-    const imageBuffer = Buffer.from(item.Imagen.data);
-    base64Image = imageBuffer.toString("base64");
-  }
-  return { ...item, Imagen: `data:image/jpeg;base64,${base64Image}` };
-});
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
   {
-    data.map((item) => (
-      <div class="bg-white rounded-lg shadow-lg p-6">
-        <div class="rounded-lg overflow-hidden">
-          <div class="px-4 py-2 bg-gray-800 text-white">
-            <h2 class="font-semibold text-xl">{item.Modelo}</h2>
-            <p class="text-sm">{item.Tipo}</p>
-            <p class="text-sm">{item.Autonomia} mile odometer</p>
-          </div>
-
-          <div
-            class="w-full h-64 bg-cover bg-center"
-            style={`background-image: url(${item.Imagen})`}
-          />
-
-          <div class="p-4">
-            <div class="flex justify-between items-center">
-              <div>
-                <h3 class="text-lg font-semibold">${item.Precio}</h3>
-                <p class="text-sm text-gray-600 line-through">${item.Precio}</p>
-              </div>
-              <div>
-                <p class="text-sm">${item.Precio}/mo</p>
-                <p class="text-xs">Demo Vehicle</p>
-              </div>
+    data.map(
+      (item: {
+        ProductoID: unknown;
+        NombreProducto: unknown;
+        Descripcion: unknown;
+        Precio: unknown;
+        Stock: unknown;
+        Categoria: unknown;
+      }) => (
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <div class="rounded-lg overflow-hidden">
+            <div class="px-4 py-2 bg-gray-800 text-white">
+              <h2 class="font-semibold text-xl">{item.NombreProducto}</h2>
+              <p class="text-sm">{item.Categoria}</p>
             </div>
 
-            <div class="mt-4">
-              <p class="text-sm">{item.ColorExterior} Paint</p>
-              <p class="text-sm">{item.OpcionesDeRuedas}</p>
-              <p class="text-sm">{item.ColorInterior} Premium Interior</p>
-              <p class="text-sm">{item.NumeroDeAsientos} Seat Interior</p>
-            </div>
-          </div>
+            <div class="p-4">
+              <div class="flex justify-between items-center">
+                <div>
+                  <h3 class="text-lg font-semibold">${item.Precio}</h3>
+                  <p class="text-sm text-gray-600">Stock: {item.Stock}</p>
+                </div>
+                <div>
+                  <p class="text-sm">ID: {item.ProductoID}</p>
+                </div>
+              </div>
 
-          <div class="px-4 py-2 bg-gray-100 flex justify-between">
-            <div>
-              <p class="text-sm">
-                {item.PaqueteDeAutopiloto ? "Autopilot" : ""}
-              </p>
-              <p class="text-sm">
-                {item.ConexionInternet
-                  ? "30-Day Premium Connectivity Trial"
-                  : ""}
-              </p>
+              <div class="mt-4">
+                <p class="text-sm">{item.Descripcion}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    ))
+      ),
+    )
   }
 </div>

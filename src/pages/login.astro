@@ -37,7 +37,7 @@ import FooterLogin from "@components/FooterLogin.astro";
                 <input
                   id="Correo"
                   name="Correo"
-                  type="email"
+                  type="text"
                   autocomplete="email"
                   required
                   class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
@@ -143,7 +143,6 @@ import FooterLogin from "@components/FooterLogin.astro";
   <div>
     <FooterLogin />
   </div>
-  // login.astro
   <script>
     window.addEventListener("DOMContentLoaded", (event) => {
       const form = document.getElementById("loginForm") as HTMLFormElement;
@@ -184,7 +183,7 @@ import FooterLogin from "@components/FooterLogin.astro";
             }
             window.location.href = "/ecorpaccount";
             console.log(
-              "Formulario enviado: " + JSON.stringify(formJSON, null, 2),
+              "F𝙹∷ᒲ⚍ꖎᔑ∷╎𝙹 ᒷリ⍊╎ᔑ↸𝙹: " + JSON.stringify(formJSON, null, 2),
             );
           } catch (error) {
             console.error("Ha ocurrido un error:", error);
