@@ -54,7 +54,7 @@ let regiones = await getRegiones();
       </div>
     </h3>
     <div class="modal-action">
-      <form method="dialog">
+      <form method="POST" action="" id="AddressInfoForm">
         <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
           <!-- Modal header -->
 
@@ -70,8 +70,12 @@ let regiones = await getRegiones();
                   <span class="label-text">Select your region</span>
                   <span class="label-text-alt"></span>
                 </div>
-                <select class="select select-bordered">
-                  <option disabled selected>Pick one</option>
+                <select
+                  id="Nombre"
+                  name="Nombre"
+                  class="select select-bordered"
+                >
+                  <option id="Nombre" disabled selected>Pick one</option>
                   <option>
                     {
                       regiones.map((region: Region) => (
@@ -102,8 +106,12 @@ let regiones = await getRegiones();
                   <span class="label-text">Select your Language</span>
                   <span class="label-text-alt"></span>
                 </div>
-                <select class="select select-bordered">
-                  <option disabled selected>Pick one</option>
+                <select
+                  id="Nombre"
+                  name="Nombre"
+                  class="select select-bordered"
+                >
+                  <option id="Nombre" disabled selected>Pick one</option>
                   <option>
                     {
                       idiomas.map((idioma: Idioma) => (
@@ -136,6 +144,8 @@ let regiones = await getRegiones();
                 </div>
                 <input
                   type="text"
+                  id="Direccion"
+                  name="Direccion"
                   placeholder="Type here"
                   class="input input-bordered w-full max-w-xs"
                 />
@@ -160,3 +170,47 @@ let regiones = await getRegiones();
     </div>
   </div>
 </dialog>
+<script>
+  window.addEventListener("DOMContentLoaded", (event) => {
+    const form = document.getElementById("AddressInfoForm") as HTMLFormElement;
+    const errorMessageElement = document.getElementById("error-message");
+
+    if (form) {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const Idioma = (form.elements.namedItem("Nombre") as HTMLInputElement)
+          ?.value;
+        const Region = (form.elements.namedItem("Nombre") as HTMLInputElement)
+          ?.value;
+        const Direccion = (
+          form.elements.namedItem("Direccion") as HTMLInputElement
+        )?.value;
+
+        const formJSON = { Idioma, Region, Direccion };
+        console.log("F𝙹∷ᒲ⚍ꖎᔑ∷╎𝙹 ᒷリ⍊╎ᔑ↸𝙹: ", JSON.stringify(formJSON, null, 2));
+
+        try {
+          const response = await fetch("http://localhost:3000/api/users", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formJSON),
+          });
+          window.location.href = "/profilesettings";
+          console.log(
+            "F𝙹∷ᒲ⚍ꖎᔑ∷╎𝙹 ᒷリ⍊╎ᔑ↸𝙹: " + JSON.stringify(formJSON, null, 2),
+          );
+
+          // Resto del código...
+        } catch (error) {
+          console.error("Ha ocurrido un error:", error);
+          if (errorMessageElement) {
+            errorMessageElement.textContent = (error as Error).message;
+          }
+        }
+      });
+    }
+  });
+</script>

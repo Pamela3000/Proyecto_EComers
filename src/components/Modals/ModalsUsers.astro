@@ -12,24 +12,24 @@
       Edit Full Name
     </h3>
     <div class="modal-action">
-      <form method="dialog">
+      <form method="" action="">
         <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
           <!-- Modal header -->
-
-          <!-- Modal content -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <!-- First name -->
+
             <div class="md:col-span-1">
               <label class="block text-gray-700 mb-2 mt-2" for="first-name">
                 First Name
               </label>
               <label
-                for="Username"
+                for="Nombre"
                 class="mt-6 relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
               >
                 <input
                   type="text"
-                  id="Username"
+                  id="Nombre"
+                  name="Nombre"
                   class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                   placeholder="Username"
                 />
@@ -42,18 +42,19 @@
               </label>
             </div>
 
-            <!-- Middle name -->
+            <!-- Middle ContrasñaHash -->
             <div class="md:col-span-1">
               <label class="block text-gray-700 mb-2 mt-2" for="middle-name">
                 Middle Name
               </label>
               <label
-                for="Username"
+                for="ContrasenaHash"
                 class="mt-6 relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
               >
                 <input
                   type="text"
-                  id="Username"
+                  id="ContrasenaHash"
+                  name="ContrasenaHash"
                   class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                   placeholder="Username"
                 />
@@ -72,12 +73,13 @@
                 Last Name
               </label>
               <label
-                for="Username"
+                for="Apellido"
                 class="mt-6 relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
               >
                 <input
                   type="text"
-                  id="Username"
+                  id="Apellido"
+                  name="Apellido"
                   class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
                   placeholder="Username"
                 />
@@ -90,6 +92,8 @@
               </label>
             </div>
           </div>
+          <!-- Modal content -->
+
           <div class="modal-action mt-11 flex justify-start">
             <button class="btn">Close</button>
             <button

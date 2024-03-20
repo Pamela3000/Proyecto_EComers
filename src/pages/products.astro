@@ -1,0 +1,29 @@
+---
+import LayoutInventory from "../layouts/LayoutInventory.astro";
+import SidebarInventory from "../components/SidebarInventory.astro";
+import InventoryList from "../components/InventoryLists.astro";
+---
+
+<LayoutInventory title="E-Corp - The Car of Your Dreams">
+  <section class="bg-white pl-[356px] sticky top-0 z-40">
+    <div class="container mx-auto px-4 flex flex-col">
+      <div class="flex justify-between items-center">
+        <h2 class="text-4xl font-semibold text-gray-800 my-4">Inventory</h2>
+        <select class="select select-bordered max-w-xs">
+          <option disabled selected>Who shot first?</option>
+          <option>Han Solo</option>
+          <option>Greedo</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <section class="pt-16 bg-white pl-[256px]">
+    <div class="container mx-auto px-4 flex flex-col">
+      <main class="flex-1 p-10">
+        <!-- Inventory grid -->
+        <InventoryList />
+      </main>
+    </div>
+  </section>
+</LayoutInventory>
